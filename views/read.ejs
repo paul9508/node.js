@@ -1,0 +1,58 @@
+<html>
+    <head> 
+        <title><%=name%></title>
+		<link rel="stylesheet" type="text/css" href="layout.css">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN_1d_7diXinBJ7ARa7MZVLmb5Fto0duE"></script>
+        <script type="text/javascript">
+            var loadMap = function() 
+            {
+				var myLatLng = {lat: <%=lat%>, lng: <%=lon%>};
+                var map = new google.maps.Map(document.getElementById("map"),{
+				      zoom: 13,
+				      center: myLatLng
+				}); 
+				var makemap = new google.maps.Marker({
+					position: myLatLng,
+					map: map,
+					title: '<%=name%>'
+				});
+            };
+            window.onload= loadMap;
+        </script>
+    </head>
+    <body>
+		<section>
+			<h1><%=name%></h1>
+		</section>
+                       <p>Google map:</p>
+                       <%if(lat==null){%>
+                       <p>no result</p><%}else{%>
+			<aside>
+        	<div id="map" style="width:500px;height:500px;"></div>
+			</aside>
+<%}%>
+<p>Borough: <%=borough%></p>
+<p>Cuisine: <%=cuisine%></p>
+<p>Street: <%=street%></p>
+<p>Building: <%=building%></p>
+<p>Zipcode: <%=zipcode%></p>
+<p>GPS: [<%=lat%>,<%=lon%>]</p>
+
+<p>Photo:</p><%if(photo=="no"){%><p>no result</p><%}else{%><img alt="Embedded Image" src="data:<%=mimetype%>;base64,<%=photo%>" /><%}%>
+<p>Rating:</p>
+<%if(r=="no"){%>
+no result
+<%}else{%>
+<ol>
+  <% r.forEach(function(rate) { %>
+  <li><%= rate.score %>(<%= rate.user %>)</li>
+  <% });}                   %>
+</ol>
+
+<p>Create by: <%=user%></p>
+<a href="/rate?id=<%=id%>" class="button">Rate</a>
+<a href="/change?id=<%=id%>" class="button">Edit</a>
+<a href="/delete?id=<%=id%>" class="button">Delete</a>
+<a href="/home" class="button">Go to home</a>
+    </body>
+</html>

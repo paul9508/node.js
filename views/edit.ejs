@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<title>Edit</title>
+</head>
+<body>
+<h1>Edit</h1>
+<form action="/change" method='post'
+            encType="multipart/form-data">
+       <div class="col-xs-3">
+	<h3>Name</h3><input type="text" class="form-control" name="name" value="<%=name%>"><br>
+        <h3>Borough: </h3><input type="text" class="form-control" name="borough" value="<%=borough%>"><br>
+        <h3>Cuisine</h3><input type="text" class="form-control" name="cuisine" value="<%=cuisine%>"><br>
+        <h3>Street: </h3><input type="text" class="form-control" name="street" value="<%=street%>"><br>
+	<h3>Building: </h3><input type="text" class="form-control" name="building" value="<%=building%>"><br>
+	<h3>Zipcode:</h3> <input type="text" class="form-control" name="zipcode" value="<%=zipcode%>"><br>
+	<h3>Latitude: </h3><input type="text" class="form-control" name="lat" value="<%=lat%>"><br>
+        <h3>Longitude:</h3> <input type="text" class="form-control" name="lon" value="<%=lon%>"><br>
+	<h2>Other Info</h2>
+	<h3>Photo: </h3><input type="file" name="sampleFile" />
+
+        <input type="hidden" name="id" value="<%=id%>">
+	<br>
+	<input type="submit" value="Edit">
+        <br>
+
+</form>
+<br>
+<a href="javascript:history.back()">Go Back</a>
+</div>
+
+</body></html>
